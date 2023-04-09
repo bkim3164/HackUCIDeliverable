@@ -25,7 +25,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-database: JSONDatabase[list[dict[str, Any]]] = JSONDatabase(r"C:\Users\Brian Kim\Desktop\HackUCI2023\tech-deliverable\api\data\database.json")
+database: JSONDatabase[list[dict[str, Any]]] = JSONDatabase(r"../api/data/database.json")
 
 @app.on_event("startup")
 def on_startup() -> None:
