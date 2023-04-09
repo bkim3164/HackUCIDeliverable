@@ -68,6 +68,6 @@ def get_message(age: int ) -> list:
     for data in database["posts"]:
         # Finds the difference between the 2 dates!
         delta = relativedelta.relativedelta(now, datetime.fromisoformat(data["time"]))
-        if delta.days <= age:
+        if delta.days + 30*delta.months + 365*delta.years <= age:
             list_posts.append(data)
     return list_posts

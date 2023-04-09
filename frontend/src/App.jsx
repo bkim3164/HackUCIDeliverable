@@ -5,31 +5,30 @@ import React, { useState } from "react";
 function App() {
 	const [name, setName] = useState("");
 	const [message, setMessage] = useState("");
-	const [time, setTime] = useState("");
+	const [time, setTime] = useState(1);
 
 
 	const handleSubmit = event => {
 		event.preventDefault()
 		const getData = async () => {
+			console.log(time)
 			const response = await fetch(`http://127.0.0.1:8000/time/${time}`, {
 				method: "GET",
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			});
 
 			const quotes = await response.json()
-			console.log(quotes.data)
+			console.log(quotes)
 		}
 
 		const postData = async () => {
-			const response = await fetch("http://127.0.0.1:8000/quote", {
+			const response = fetch("http://127.0.0.1:8000/quote", {
 				method: "POST",
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
 				body: `name=${name}&message=${message}`
 			});
-			const quotes = await response.json()
 		}
 		postData()
-
 		getData()
 
 
