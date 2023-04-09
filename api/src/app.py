@@ -1,4 +1,5 @@
 from datetime import datetime
+from dateutil import relativedelta
 from typing import Any
 
 from fastapi import FastAPI, Form, status
@@ -56,3 +57,17 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
 
 
 # TODO: add another API route with a query parameter to retrieve quotes based on max age
+
+@app.get("/time/{age}")
+def get_message(age: int ) -> list:
+    """
+    Process retrieving quotes based on max age
+    """
+    list_posts = []
+    now = datetime.now().replace(microsecond=0)
+    for data in database["posts"]:
+        # Finds the difference between the 2 dates!
+        delta = relativedelta.relativedelta(now, datetime.fromisoformat(data["time"]))
+        if delta.days <= age:
+            list_posts.append(data)
+    return list_posts

@@ -1,5 +1,4 @@
 import "./App.css";
-import axios from 'axios';
 import React, { useState } from "react";
 
 
@@ -8,10 +7,18 @@ function App() {
 	const [message, setMessage] = useState("");
 	const [time, setTime] = useState("");
 
+
 	const handleSubmit = event => {
 		event.preventDefault()
-		console.log(event)
+		const getData = async () => {
+			const response = await fetch(`http://127.0.0.1:8000/time/${time}`, {
+				method: "GET",
+				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			});
 
+			const quotes = await response.json()
+			console.log(quotes.data)
+		}
 
 		const postData = async () => {
 			const response = await fetch("http://127.0.0.1:8000/quote", {
@@ -19,9 +26,12 @@ function App() {
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
 				body: `name=${name}&message=${message}`
 			});
-			//const quotes = await response.json()
+			const quotes = await response.json()
 		}
 		postData()
+
+		getData()
+
 
 
 	};
@@ -38,11 +48,10 @@ function App() {
 				<label htmlFor="input-message">Quote</label>
 				<input onChange={(event) => setMessage(event.target.value)} type="text" name="message" id="input-message" required />
 				<select onChange={(event) => setTime(event.target.value)}>
-					<option value="1">Last day test</option>
+					<option value="1" selected>Last day</option>
 					<option value="7">Last week</option>
 					<option value="30">Last month</option>
 					<option value="365">Last year</option>
-					<option value="all">Last year</option>
 				</select>
 				<button type="submit">Submit</button>
 			</form>
