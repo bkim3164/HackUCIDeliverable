@@ -1,8 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import Quotes from './Quotes.jsx';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import QuoteBook from './quotebook.png';
 
 function App() {
 	const [name, setName] = useState("");
@@ -41,16 +40,18 @@ function App() {
 		return (
 			<div className="App">
 				{/* TODO: include an icon for the quote book */}
-				<h1 >Hack @ UCI Tech Deliverable</h1>
-
+				<div className="header">
+					<img src={QuoteBook} className="quotebook" />
+					<h1>Hack @ UCI Tech Deliverable</h1>
+				</div>
 				<div className="submit-quote">
-					<h2>Submit a quote!</h2>
+					<h2>Submit a Quote!</h2>
 					{/* TODO: implement custom form submission logic to not refresh the page */}
 					<form onSubmit={handleSubmit} className="form">
 						<label htmlFor="input-name" className="form-name">Name</label>
-						<input onChange={(event) => setName(event.target.value)} type="text" name="name" id="input-name" required />
+						<input onChange={(event) => setName(event.target.value)} type="text" name="name" id="input-name" label="Enter name" required />
 						<label htmlFor="input-message" className="form-quote">Quote</label>
-						<input onChange={(event) => setMessage(event.target.value)} type="text" name="message" id="input-message" required />
+						<input onChange={(event) => setMessage(event.target.value)} type="text" name="message" id="input-message" label="Enter message" required />
 						<label htmlFor="input-message" className="form-quote">Timeframe</label>
 						<select className="form-select" onChange={(event) => setTime(event.target.value)}>
 							<option value="1" selected>Last day</option>
@@ -72,10 +73,13 @@ function App() {
 	return (
 		<div className="App">
 			{/* TODO: include an icon for the quote book */}
-			<h1>Hack @ UCI Tech Deliverable</h1>
+			<div className="header">
+				<img src={QuoteBook} className="quotebook" />
+				<h1>Hack @ UCI Tech Deliverable</h1>
+			</div>
 
 			<div className="submit-quote">
-				<h2>Submit a quote!</h2>
+				<h2>Submit a Quote!</h2>
 				{/* TODO: implement custom form submission logic to not refresh the page */}
 				<form onSubmit={handleSubmit} className="form">
 					<label htmlFor="input-name" className="form-name">Name</label>

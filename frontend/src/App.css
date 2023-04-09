@@ -1,12 +1,12 @@
-* {
+body {
     margin: 0;
     font-family: 'Times New Roman', Times, serif;
+    animation: move2 infinite 5s;
 }
 
 h1 {
     color: white;
     margin-bottom: 20px;
-    animation: move1 infinite 5s;
 }
 
 @keyframes move1 {
@@ -15,7 +15,7 @@ h1 {
     }
 
     20% {
-        transform: rotate(15deg);
+        transform: rotate(5deg);
     }
 
     40% {
@@ -23,7 +23,7 @@ h1 {
     }
 
     60% {
-        transform: rotate(-15deg);
+        transform: rotate(-5deg);
     }
 
     80% {
@@ -38,8 +38,8 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    animation: move2 infinite 5s;
+    height: 100%;
+    overflow: auto;
 }
 
 @keyframes move2 {
@@ -133,4 +133,14 @@ h1 {
 
 .messages {
     margin-top: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    animation: move1 infinite 5s;
+}
+
+.quotebook {
+    height: 50px;
 }
