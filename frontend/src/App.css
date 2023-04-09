@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    animation: move1 infinite 5s;
+}
+
+@keyframes move1 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(15deg);
+    }
+
+    40% {
+        transform: rotate(0deg);
+    }
+
+    60% {
+        transform: rotate(-15deg);
+    }
+
+    80% {
+        transform: rotate(0deg);
+    }
+
+}
+
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: move2 infinite 5s;
+}
+
+@keyframes move2 {
+    0% {
+        background-color: cornflowerblue;
+    }
+
+    50% {
+        background-color: rgb(183, 166, 11);
+    }
+
+    100% {
+        background-color: cornflowerblue;
+    }
+}
+
+.submit-quote {
+    border: 10px solid navy;
+    background-color: #FFDB58;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+
+.form-quote {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#input-name,
+#input-message,
+.form-select,
+.form-submit {
+    width: 99%;
+    height: 3vh;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: white;
+
+}
+
+
+#input-name:hover,
+#input-message:hover,
+.form-select:hover,
+.form-submit:hover {
+    background-color: darkgrey;
+}
+
+.form-select {
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 100%;
+    height: 4vh;
+    text-align: center;
+
+}
+
+.quote {
+    color: white
+}
+
+.form-submit {
+    margin-top: 38px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 40vw;
+    height: 4vh;
+}
+
+.messages {
+    margin-top: 20px;
+}
