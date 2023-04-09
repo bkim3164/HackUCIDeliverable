@@ -13,27 +13,37 @@ function App() {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		const getData = async () => {
-			console.log(time)
-			const response = await fetch(`http://127.0.0.1:8000/time/${time}`, {
-				method: "GET",
-				headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			});
 
-			const quotes = await response.json()
-			setData(quotes)
+		const getData = async () => {
+			try {
+				const response = await fetch(`http://127.0.0.1:8000/time/${time}`, {
+					method: "GET",
+					headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				});
+
+				const quotes = await response.json()
+				setData(quotes)
+			} catch (Error) {
+				console.log(Error)
+			}
 
 		}
 
 		const postData = async () => {
-			const response = fetch("http://127.0.0.1:8000/quote", {
-				method: "POST",
-				headers: { "Content-Type": "application/x-www-form-urlencoded" },
-				body: `name=${name}&message=${message}`
-			});
+			try {
+				const response = fetch("http://127.0.0.1:8000/quote", {
+					method: "POST",
+					headers: { "Content-Type": "application/x-www-form-urlencoded" },
+					body: `name=${name}&message=${message}`
+				});
+			}
+			catch (Error) {
+				console.log(Error)
+			}
 		}
 		postData()
 		getData()
+		document.getElementById("form").reset();
 
 	};
 	if (data) {
@@ -47,7 +57,7 @@ function App() {
 				<div className="submit-quote">
 					<h2>Submit a Quote!</h2>
 					{/* TODO: implement custom form submission logic to not refresh the page */}
-					<form onSubmit={handleSubmit} className="form">
+					<form onSubmit={handleSubmit} id="form" className="form">
 						<label htmlFor="input-name" className="form-name">Name</label>
 						<input onChange={(event) => setName(event.target.value)} type="text" name="name" id="input-name" label="Enter name" required />
 						<label htmlFor="input-message" className="form-quote">Quote</label>
