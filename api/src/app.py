@@ -6,10 +6,25 @@ from fastapi.responses import RedirectResponse
 
 from services.database import JSONDatabase
 
+#cross-origin requests: handles requests from different ports or domains
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 
-database: JSONDatabase[list[dict[str, Any]]] = JSONDatabase("data/database.json")
+origins = [
+    "http://localhost:5173",
+    "localhost:5173"
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+database: JSONDatabase[list[dict[str, Any]]] = JSONDatabase(r"C:\Users\Brian Kim\Desktop\HackUCI2023\tech-deliverable\api\data\database.json")
 
 @app.on_event("startup")
 def on_startup() -> None:
