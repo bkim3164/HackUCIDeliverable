@@ -1,0 +1,27 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.quote-card {
+    margin-bottom: 20px;
+    border: 3px solid black;
+    border-radius: 5px;
+    width: 40vw;
+    background-color: royalblue;
+    color: white;
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
+.quote-name {
+    font-size: 20px;
+    border-bottom: 2px solid black;
+}
+
+.quote-time {
+    border-bottom: 2px solid black;
+}
+
+.quote-message {
+    margin-bottom: 15px;
+}
