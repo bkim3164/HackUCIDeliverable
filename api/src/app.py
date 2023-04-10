@@ -6,6 +6,7 @@ from fastapi import FastAPI, Form, status
 from fastapi.responses import RedirectResponse
 
 from services.database import JSONDatabase
+from logging import getLogger
 
 #cross-origin requests: handles requests from different ports or domains
 from fastapi.middleware.cors import CORSMiddleware
@@ -36,7 +37,10 @@ def on_startup() -> None:
 
 @app.on_event("shutdown")
 def on_shutdown() -> None:
+    log = getLogger(__name__)
+    log.info('Hello') 
     database.close()
+
 
 
 @app.post("/quote")
